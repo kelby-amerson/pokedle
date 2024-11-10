@@ -6,5 +6,4 @@
     console.log("data", data)
 </script>
 
-
 <Body pokemon={data}/>

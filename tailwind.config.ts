@@ -47,7 +47,10 @@ const config: Config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
-				}
+				},
+				'rhydon-primary': '#8B8B94',
+				'rhydon-secondary': '#C5C5BD',
+				'rhydon-tertiary': '#B4A473'
 			},
 			borderRadius: {
 				lg: "var(--radius)",

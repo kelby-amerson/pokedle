@@ -110,7 +110,7 @@
 
 <div class="invisible bg-red-300 bg-amber-300 bg-green-300 bg-neutral-300 invisible"></div>
 <div class="container mx-auto my-3 max-w-max">
-<Card.Root >
+<Card.Root class="shadow-lg bg-rhydon-secondary">
     <Card.Header class="items-center">
         <Card.Title class={guessNumber >= 5 || guessedCorrectly ? `text-center` : `invisible text-center`}>{goldenPokemonName}</Card.Title>
     </Card.Header>
@@ -119,9 +119,8 @@
             <div class="flex flex-col">
                 <img id="sprite" class={guessNumber >= 4 || guessedCorrectly ? `` : `invisible`} src={spriteSource} alt="pokemon sprite">
                 <div class="flex items-end justify-center flex-col gap-1">
-                    <Badge>Height: {Math.round(pokemon.pokemonObj.height * 3.937)} in.</Badge> 
-                    <Badge>Weight: {Math.round(pokemon.pokemonObj.weight / 4.536)} lb </Badge> 
-
+                    <Badge class="bg-rhydon-tertiary text-black">Height: {Math.round(pokemon.pokemonObj.height * 3.937)} in.</Badge> 
+                    <Badge class="bg-rhydon-tertiary text-black">Weight: {Math.round(pokemon.pokemonObj.weight / 4.536)} lb </Badge> 
                 </div>
             </div>
             <div class="flex flex-wrap justify-center flex-col">
@@ -137,13 +136,13 @@
         <div class="flex flex-row justify-center columns-4 aspect-auto gap-1">
             <div class="flex flex-col place-items-center justify-between">
                 <Label class="text-md">Cry</Label>
-                <Button class="place-self-end rounded-full" on:click={playAudio} id="cry"><IconoirPlaySolid/></Button>
+                <Button class="place-self-end rounded-full bg-rhydon-tertiary text-black" on:click={playAudio} id="cry"><IconoirPlaySolid/></Button>
             </div>
             <div class="flex flex-col place-items-center justify-between">
                 <Label class="text-md">Types</Label>
                 <div class="flex flex-col gap-1">
                 {#each goldenPokemonObj.types as type }
-                    <Badge id={type} class={guessNumber >= 1 || guessedCorrectly ? `` : `invisible`}>
+                    <Badge id={type} class={guessNumber >= 1 || guessedCorrectly ? `bg-rhydon-tertiary text-black` : `bg-rhydon-teriary text-black invisible`}>
                     {type}
                     </Badge>
                 {/each}
@@ -155,7 +154,7 @@
             </div>
             <div class="flex flex-col place-items-center justify-between">
                 <Label class="text-md" for="ability">Ability</Label>
-                <Badge id="ability" class={guessNumber >= 3 || guessedCorrectly ? `` : `invisible`}>{goldenPokemonObj.ability}</Badge>
+                <Badge id="ability" class={guessNumber >= 3 || guessedCorrectly ? `bg-rhydon-tertiary text-black` : `bg-rhydon-tertiary text-black invisible`}>{goldenPokemonObj.ability}</Badge>
             </div>
         </div>
     </Card.Content>
@@ -164,10 +163,10 @@
 
 <div class="flex justify-center items-center">
     <form onkeydown={(e) => updateGuess(e)}>
-        <Input id="guess0" placeholder="Guess #1" class={`max-w-xs bg-${guess[0].howClose}-300`} bind:value={guess[0].value} disabled={guessNumber !== 0 || guessedCorrectly}/>
-        <Input id="guess1" placeholder="Guess #2" class={`max-w-xs bg-${guess[1].howClose}-300`} bind:value={guess[1].value} disabled={guessNumber !== 1 || guessedCorrectly}/>
-        <Input id="guess2" placeholder="Guess #3" class={`max-w-xs bg-${guess[2].howClose}-300`} bind:value={guess[2].value} disabled={guessNumber !== 2 || guessedCorrectly}/>
-        <Input id="guess3" placeholder="Guess #4" class={`max-w-xs bg-${guess[3].howClose}-300`} bind:value={guess[3].value} disabled={guessNumber !== 3 || guessedCorrectly}/>
+        <Input id="guess0" placeholder="Guess #1" class={`max-w-xs bg-${guess[0].howClose}-300 mb-1`} bind:value={guess[0].value} disabled={guessNumber !== 0 || guessedCorrectly}/>
+        <Input id="guess1" placeholder="Guess #2" class={`max-w-xs bg-${guess[1].howClose}-300 mb-1`} bind:value={guess[1].value} disabled={guessNumber !== 1 || guessedCorrectly}/>
+        <Input id="guess2" placeholder="Guess #3" class={`max-w-xs bg-${guess[2].howClose}-300 mb-1`} bind:value={guess[2].value} disabled={guessNumber !== 2 || guessedCorrectly}/>
+        <Input id="guess3" placeholder="Guess #4" class={`max-w-xs bg-${guess[3].howClose}-300 mb-1`} bind:value={guess[3].value} disabled={guessNumber !== 3 || guessedCorrectly}/>
         <Input id="guess4" placeholder="Guess #5" class={`max-w-xs bg-${guess[4].howClose}-300`} bind:value={guess[4].value} disabled={guessNumber !== 4 || guessedCorrectly}/>
     </form>    
 </div>
