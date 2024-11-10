@@ -94,7 +94,12 @@
                 }
                 guessNumber++;
             }).catch((err) => {
-                console.log("caught", err);
+                const box = document.getElementById(`guess${guessNumber}`);
+                box.classList.add("animate-shake");
+                // box.classList.remove("animate-shake");
+                box.addEventListener("animationend", function(e) {
+                    box.classList.remove('animate-shake')
+                });
                 return;
             });
             console.log("guessNumber", guessNumber)
@@ -160,10 +165,10 @@
 
 <div class="flex justify-center items-center">
     <form onkeydown={(e) => updateGuess(e)}>
-        <Input placeholder="Guess #1" class={`max-w-xs bg-${guess[0].howClose}-300`} bind:value={guess[0].value} disabled={guessNumber !== 0 || guessedCorrectly}/>
-        <Input placeholder="Guess #2" class={`max-w-xs bg-${guess[1].howClose}-300`} bind:value={guess[1].value} disabled={guessNumber !== 1 || guessedCorrectly}/>
-        <Input placeholder="Guess #3" class={`max-w-xs bg-${guess[2].howClose}-300`} bind:value={guess[2].value} disabled={guessNumber !== 2 || guessedCorrectly}/>
-        <Input placeholder="Guess #4" class={`max-w-xs bg-${guess[3].howClose}-300`} bind:value={guess[3].value} disabled={guessNumber !== 3 || guessedCorrectly}/>
-        <Input placeholder="Guess #5" class={`max-w-xs bg-${guess[4].howClose}-300`} bind:value={guess[4].value} disabled={guessNumber !== 4 || guessedCorrectly}/>
+        <Input id="guess0" placeholder="Guess #1" class={`max-w-xs bg-${guess[0].howClose}-300`} bind:value={guess[0].value} disabled={guessNumber !== 0 || guessedCorrectly}/>
+        <Input id="guess1" placeholder="Guess #2" class={`max-w-xs bg-${guess[1].howClose}-300`} bind:value={guess[1].value} disabled={guessNumber !== 1 || guessedCorrectly}/>
+        <Input id="guess2" placeholder="Guess #3" class={`max-w-xs bg-${guess[2].howClose}-300`} bind:value={guess[2].value} disabled={guessNumber !== 2 || guessedCorrectly}/>
+        <Input id="guess3" placeholder="Guess #4" class={`max-w-xs bg-${guess[3].howClose}-300`} bind:value={guess[3].value} disabled={guessNumber !== 3 || guessedCorrectly}/>
+        <Input id="guess4" placeholder="Guess #5" class={`max-w-xs bg-${guess[4].howClose}-300`} bind:value={guess[4].value} disabled={guessNumber !== 4 || guessedCorrectly}/>
     </form>    
 </div>
