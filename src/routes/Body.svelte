@@ -109,6 +109,9 @@
 
 
 <div class="invisible bg-red-300 bg-amber-300 bg-green-300 bg-neutral-300 invisible"></div>
+<div class="flex justify-center">
+    <img src={base + `/images/pokedle-small.png`}/>
+</div>
 <div class="container mx-auto my-3 max-w-max">
 <Card.Root class="shadow-lg bg-rhydon-secondary">
     <Card.Header class="items-center">
