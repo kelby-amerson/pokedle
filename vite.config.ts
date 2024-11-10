@@ -10,5 +10,6 @@ export default defineConfig({
 			autoInstall: true,
 		  }),
 	],
+	base: "/pokedle/",
 	assetsInclude: ['lib/assets/*.png']
 });

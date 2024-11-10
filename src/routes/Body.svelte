@@ -5,7 +5,8 @@
     import { Input } from "$lib/components/ui/input";
     import { Button } from "$lib/components/ui/button";
     import { Badge } from "$lib/components/ui/badge";
-    import { Label } from "$lib/components/ui/label";
+    import { Label } from "$lib/components/ui/label";   
+    import { base } from "$app/paths"
     import IconoirPlaySolid from '~icons/iconoir/play-solid';
 
     const GuessCondition = Object.freeze({
@@ -16,8 +17,8 @@
     });
     let { pokemon } = $props();
 
-    const shapeImages = import.meta.glob("../lib/assets/*.png", { eager: true });
-    let shapeSource = [`/src/lib/assets/${pokemon.speciesObj.shape.name}.png`];
+    // let shapeSource = [`$lib/assets/${pokemon.speciesObj.shape.name}.png`];
+    // let shapeSource = [`/images/${pokemon.speciesObj.shape.name}.png`]
 
     const types = [];
     pokemon.pokemonObj.types.forEach((obj) => {
@@ -32,7 +33,6 @@
         types,
         generation: pokemon.speciesObj.generation.name,
         cry: pokemon.pokemonObj.cries.latest,
-        shape: shapeSource,
         ability: pokemon.pokemonObj.abilities[0].ability.name
     }
 
@@ -147,7 +147,7 @@
             </div>
             <div class="flex flex-col place-items-center">
                 <Label class="text-md" for="shape">Shape</Label>
-                <img id="shape" src={goldenPokemonObj.shape} alt="pokemon shape" class={guessNumber >= 2 || guessedCorrectly? `` : `invisible`}/>
+                <img id="shape" src={base + `/images/${pokemon.speciesObj.shape.name}.png`} alt="pokemon shape" class={guessNumber >= 2 || guessedCorrectly? `` : `invisible`}/>
             </div>
             <div class="flex flex-col place-items-center justify-between">
                 <Label class="text-md" for="ability">Ability</Label>
