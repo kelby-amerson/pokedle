@@ -102,7 +102,6 @@
                 });
                 return;
             });
-            console.log("guessNumber", guessNumber)
         }
         
     }
