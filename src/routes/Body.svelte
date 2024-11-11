@@ -69,7 +69,8 @@
 	}
 
 	async function updateGuess(e) {
-		if (e.code === 'Enter') {
+        console.log(e);
+		if (e.key === 'Enter') {
 			if (guess[guessNumber].value.toUpperCase() === goldenPokemonName) {
 				guess[guessNumber].howClose = GuessCondition.CORRECT;
 				guessedCorrectly = true;
@@ -78,7 +79,7 @@
 			}
 
 			const fetchData = await fetch(
-				`https://pokeapi.co/api/v2/pokemon-species/${guess[guessNumber].value}`
+				`https://pokeapi.co/api/v2/pokemon-species/${guess[guessNumber].value.toLowerCase()}`
 			);
 
 			const response = await fetchData
