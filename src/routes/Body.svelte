@@ -17,9 +17,6 @@
 	});
 	let { pokemon } = $props();
 
-	// let shapeSource = [`$lib/assets/${pokemon.speciesObj.shape.name}.png`];
-	// let shapeSource = [`/images/${pokemon.speciesObj.shape.name}.png`]
-
 	const types = [];
 	pokemon.pokemonObj.types.forEach((obj) => {
 		types.push(obj.type.name);
@@ -98,7 +95,6 @@
 				.catch((err) => {
 					const box = document.getElementById(`guess${guessNumber}`);
 					box.classList.add('animate-shake');
-					// box.classList.remove("animate-shake");
 					box.addEventListener('animationend', function (e) {
 						box.classList.remove('animate-shake');
 					});
