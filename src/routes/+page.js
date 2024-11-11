@@ -1,4 +1,5 @@
-/** @type {import('./$types').PageServerLoad} */
+export const ssr = false;
+/** @type {import('./$types').PageLoad} */
 export async function load ({ fetch }){
     /**
 	 * @param {number} max
