@@ -58,7 +58,8 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans]
+				sans: [...fontFamily.sans],
+				PressStart2P: ["'Press Start 2P'", "sans-serif"]
 			},
 			animation:{
                 'shake': 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
