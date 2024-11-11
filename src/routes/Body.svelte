@@ -110,7 +110,7 @@
 </div>
 <div class="lg:flex lg:flex-row lg:justify-center">
 	<div class="container sm:mx-auto sm:my-3 sm:max-w-max lg:mx-10">
-		<Card.Root class="bg-rhydon-secondary shadow-lg">
+		<Card.Root class="bg-swellow-secondary shadow-lg">
 			<Card.Header class="items-center">
 				<Card.Title
 					class={guessNumber >= 5 || guessedCorrectly
@@ -128,10 +128,10 @@
 							alt="pokemon sprite"
 						/>
 						<div class="flex flex-col items-end justify-center gap-1">
-							<Badge class="bg-rhydon-tertiary text-black"
+							<Badge class="bg-swellow-tertiary"
 								>Height: {Math.round(pokemon.pokemonObj.height * 3.937)} in.</Badge
 							>
-							<Badge class="bg-rhydon-tertiary text-black"
+							<Badge class="bg-swellow-tertiary"
 								>Weight: {Math.round(pokemon.pokemonObj.weight / 4.536)} lb
 							</Badge>
 						</div>
@@ -151,7 +151,7 @@
 					<div class="flex flex-col place-items-center justify-between">
 						<Label class="text-md">Cry</Label>
 						<Button
-							class="bg-rhydon-tertiary place-self-end rounded-full text-black"
+							class="bg-swellow-tertiary place-self-end rounded-full"
 							on:click={playAudio}
 							id="cry"><IconoirPlaySolid /></Button
 						>
@@ -163,8 +163,8 @@
 								<Badge
 									id={type}
 									class={guessNumber >= 1 || guessedCorrectly
-										? `bg-rhydon-tertiary text-black`
-										: `bg-rhydon-teriary invisible text-black`}
+										? `bg-swellow-tertiary`
+										: `bg-swellow-teriary invisible`}
 								>
 									{type}
 								</Badge>
@@ -185,8 +185,8 @@
 						<Badge
 							id="ability"
 							class={guessNumber >= 3 || guessedCorrectly
-								? `bg-rhydon-tertiary text-black`
-								: `bg-rhydon-tertiary invisible text-black`}>{goldenPokemonObj.ability}</Badge
+								? `bg-swellow-tertiary`
+								: `bg-swellow-tertiary invisible`}>{goldenPokemonObj.ability}</Badge
 						>
 					</div>
 				</div>

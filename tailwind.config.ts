@@ -50,7 +50,10 @@ const config: Config = {
 				},
 				'rhydon-primary': '#8B8B94',
 				'rhydon-secondary': '#C5C5BD',
-				'rhydon-tertiary': '#B4A473'
+				'rhydon-tertiary': '#B4A473',
+				'swellow-primary': '#294162',
+				'swellow-secondary': '#C55A73',
+				'swellow-tertiary': '#415A7B'
 			},
 			borderRadius: {
 				lg: "var(--radius)",
