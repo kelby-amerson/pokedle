@@ -7,6 +7,8 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Label } from '$lib/components/ui/label';
 	import { base } from '$app/paths';
+	import { fade } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	import IconoirPlaySolid from '~icons/iconoir/play-solid';
 
 	const GuessCondition = Object.freeze({
@@ -69,7 +71,7 @@
 	}
 
 	async function updateGuess(e) {
-        console.log(e);
+		console.log(e);
 		if (e.key === 'Enter') {
 			if (guess[guessNumber].value.toUpperCase() === goldenPokemonName) {
 				guess[guessNumber].howClose = GuessCondition.CORRECT;
@@ -113,21 +115,25 @@
 	<div class="container sm:mx-auto sm:my-3 sm:max-w-max lg:mx-10">
 		<Card.Root class="bg-swellow-secondary shadow-lg">
 			<Card.Header class="items-center">
-				<Card.Title
-					class={guessNumber >= 5 || guessedCorrectly
-						? `font-PressStart2P text-center`
-						: `font-PressStart2P invisible text-center`}>{goldenPokemonName}</Card.Title
-				>
+				{#if guessNumber >= 5 || guessedCorrectly}
+					<div transition:fade>
+						<Card.Title class={`font-PressStart2P text-center h-5`}>
+							{goldenPokemonName}
+						</Card.Title>
+					</div>
+				{/if}
 			</Card.Header>
 			<Card.Content>
 				<div class="flex aspect-auto columns-2 flex-row justify-center">
-					<div class="flex flex-col">
-						<img
-							id="sprite"
-							class={guessNumber >= 4 || guessedCorrectly ? `` : `invisible`}
-							src={spriteSource}
-							alt="pokemon sprite"
-						/>
+					<div class="flex flex-col place-content-end lg:h-40">
+						{#if guessNumber >= 4 || guessedCorrectly}
+							<img
+								id="sprite"
+								src={spriteSource}
+								transition:fade={{ duration: 3000, easing: quintOut }}
+								alt="pokemon sprite"
+							/>
+						{/if}
 						<div class="flex flex-col items-end justify-center gap-1">
 							<Badge class="bg-swellow-tertiary"
 								>Height: {Math.round(pokemon.pokemonObj.height * 3.937)} in.</Badge
@@ -149,46 +155,42 @@
 					</div>
 				</div>
 				<div class="flex aspect-auto columns-4 flex-row justify-center gap-1">
-					<div class="flex flex-col place-items-center justify-between">
-						<Label class="text-md">Cry</Label>
-						<Button
-							class="bg-swellow-tertiary place-self-end rounded-full"
-							on:click={playAudio}
-							id="cry"><IconoirPlaySolid /></Button
+					<div class="flex w-16 flex-col place-items-center justify-between">
+						<Label class="my-1">Cry</Label>
+						<Button class="bg-swellow-tertiary rounded-full" on:click={playAudio} id="cry"
+							><IconoirPlaySolid /></Button
 						>
 					</div>
-					<div class="flex flex-col place-items-center justify-between">
-						<Label class="text-md">Types</Label>
-						<div class="flex flex-col gap-1">
-							{#each goldenPokemonObj.types as type}
-								<Badge
-									id={type}
-									class={guessNumber >= 1 || guessedCorrectly
-										? `bg-swellow-tertiary`
-										: `bg-swellow-teriary invisible`}
-								>
-									{type}
-								</Badge>
-							{/each}
-						</div>
+					<div class="flex w-16 flex-col place-items-center justify-between">
+						<Label class="my-1">Types</Label>
+						{#if guessNumber >= 1 || guessedCorrectly}
+							<div class="flex flex-col gap-1" transition:fade={{ duration: 2000 }}>
+								{#each goldenPokemonObj.types as type}
+									<Badge id={type} class={`bg-swellow-tertiary`}>
+										{type}
+									</Badge>
+								{/each}
+							</div>
+						{/if}
 					</div>
-					<div class="flex flex-col place-items-center">
-						<Label class="text-md" for="shape">Shape</Label>
-						<img
-							id="shape"
-							src={base + `/images/${pokemon.speciesObj.shape.name}.png`}
-							alt="pokemon shape"
-							class={guessNumber >= 2 || guessedCorrectly ? `` : `invisible`}
-						/>
+					<div class="flex w-16 flex-col place-items-center">
+						<Label class="my-1" for="shape">Shape</Label>
+						{#if guessNumber >= 2 || guessedCorrectly}
+							<img
+								id="shape"
+								src={base + `/images/${pokemon.speciesObj.shape.name}.png`}
+								alt="pokemon shape"
+								transition:fade={{ duration: 3000, easing: quintOut }}
+							/>
+						{/if}
 					</div>
-					<div class="flex flex-col place-items-center justify-between">
-						<Label class="text-md" for="ability">Ability</Label>
-						<Badge
-							id="ability"
-							class={guessNumber >= 3 || guessedCorrectly
-								? `bg-swellow-tertiary`
-								: `bg-swellow-tertiary invisible`}>{goldenPokemonObj.ability}</Badge
-						>
+					<div class="flex w-16 flex-col place-items-center justify-between">
+						<Label class="my-1" for="ability">Ability</Label>
+						{#if guessNumber >= 3 || guessedCorrectly}
+							<div transition:fade>
+								<Badge id="ability" class={`bg-swellow-tertiary`}>{goldenPokemonObj.ability}</Badge>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</Card.Content>
