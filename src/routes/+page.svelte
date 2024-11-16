@@ -3,6 +3,7 @@
     
     /** @type {{ data: import('./$types').PageServerData }} */
 	let { data } = $props();
+    
     console.log("data", data)
 </script>
 
