@@ -60,45 +60,15 @@
 
 <div class="flex items-center justify-center">
 	<form id="guesses" aria-label="Submit a guess">
-		<Input
-			id="guess0"
-			placeholder="Guess #1"
-			class={`max-w-xs bg-${guess[0].howClose}-300 mb-1`}
-			bind:value={guess[0].value}
-			disabled={guessNumber !== 0 || guessedCorrectly}
-			onkeydown={(e) => updateGuess(e)}
-		/>
-		<Input
-			id="guess1"
-			placeholder="Guess #2"
-			class={`max-w-xs bg-${guess[1].howClose}-300 mb-1`}
-			bind:value={guess[1].value}
-			disabled={guessNumber !== 1 || guessedCorrectly}
-			onkeydown={(e) => updateGuess(e)}
-		/>
-		<Input
-			id="guess2"
-			placeholder="Guess #3"
-			class={`max-w-xs bg-${guess[2].howClose}-300 mb-1`}
-			bind:value={guess[2].value}
-			disabled={guessNumber !== 2 || guessedCorrectly}
-			onkeydown={(e) => updateGuess(e)}
-		/>
-		<Input
-			id="guess3"
-			placeholder="Guess #4"
-			class={`max-w-xs bg-${guess[3].howClose}-300 mb-1`}
-			bind:value={guess[3].value}
-			disabled={guessNumber !== 3 || guessedCorrectly}
-			onkeydown={(e) => updateGuess(e)}
-		/>
-		<Input
-			id="guess4"
-			placeholder="Guess #5"
-			class={`max-w-xs bg-${guess[4].howClose}-300`}
-			bind:value={guess[4].value}
-			disabled={guessNumber !== 4 || guessedCorrectly}
-			onkeydown={(e) => updateGuess(e)}
-		/>
+        {#each guess as item, i}
+            <Input 
+                id={`guess${i}`}
+                placeholder={`Guess #${i+1}`}
+                class={`max-w-xs bg-${guess[i].howClose}-300 mb-1`}
+                bind:value={guess[i].value}
+                disabled={guessNumber !== i || guessedCorrectly}
+                onkeydown={(e) => updateGuess(e)}
+            />
+        {/each}
 	</form>
 </div>
