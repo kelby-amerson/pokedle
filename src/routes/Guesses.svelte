@@ -1,5 +1,6 @@
 <script>
 	import { Input } from '$lib/components/ui/input';
+    import { pokemonNames } from "../lib/pokemonNames";
 
 	const GuessCondition = Object.freeze({
 		IDLE: 'neutral',
@@ -68,7 +69,13 @@
                 bind:value={guess[i].value}
                 disabled={guessNumber !== i || guessedCorrectly}
                 onkeydown={(e) => updateGuess(e)}
+                list="pokemon-names"
             />
         {/each}
+        <datalist id="pokemon-names">
+            {#each pokemonNames as poke, i}
+                <option value={poke.name}></option>
+            {/each}
+        </datalist>
 	</form>
 </div>
