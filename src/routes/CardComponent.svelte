@@ -8,7 +8,6 @@
     import { base } from '$app/paths';
     import { fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-    import { setContext, getContext } from 'svelte';
 
     let {guessNumber, guessedCorrectly, pokemon, goldenPokemonObj} = $props();
     console.log("pokemon", pokemon)
